@@ -1,6 +1,27 @@
+"""
+Button Board Hello World
+by Travis Bumgarner
+Revision 1.0
+Date 11-21-2016
+
+This sketch is for the Button Board V1.2. It will display a message
+via the terminal for each button press.
+"""
+
+#Imports
+"""
+First import allows Python to control the GPIO Pins and the second
+Allows for using time delays.
+"""
 import RPi.GPIO as GPIO
 import time
 
+# Inputs
+"""
+I found it best the use the SparkFun Pi Wedge which makes the GPIO
+much easier to access on the breadboard. Pins 16 and 17 are on
+the left side of the board and the remaining pins are on the right side.
+"""
 s1 = 16
 s2 = 17
 s3 = 18
@@ -14,6 +35,10 @@ s10 = 25
 s11 = 26
 s12 = 27
 
+#Setup
+"""
+The following code sets each of the 12 pins as inputs to the Raspberry Pi
+"""
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(s1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(s2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -28,6 +53,12 @@ GPIO.setup(s10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(s11, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(s12, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
+#Loop
+"""
+This loop will run forever until Ctrl+C is pressed. It will loop through and
+check if any of the 12 buttons are pressed, if so, it triggers the print
+statement.
+"""
 print("Press CTRL+C to exit")
 try:
     while True:
